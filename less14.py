@@ -36,12 +36,9 @@ class Tree:
             return obj
         s, p, fl_find = self.__find(self.root, None, obj.data)
 
-        def test_append(obj):
-            if obj == None:
-                print("root")
-            elif obj == Node:
-                print("node")
-            assert 0
+        def test_matching(self):
+            self.assertFalse(self.root == None, "No root found")
+            self.assertTrue(self.root == self.obj, "Success")
 
         if not fl_find and s:
             if obj.data < s.data:
@@ -67,7 +64,7 @@ class Tree:
             return self.__find_max(node.right)
 
         def test_find_max():
-            assert self.__find_max(node.left)
+            assert self.__find_max(node.right)
 
     def del_leaf(self, s, p):
         if p.left == s:
@@ -75,8 +72,8 @@ class Tree:
         elif p.right == s:
             p.right = None
 
-        def test_del_leaf():
-            assert del_leaf(self, None, None)
+    def test_del_leaf(self):
+        self.assertEqual((self.del_leaf.s, self.del_leaf.p), None, None)
 
     def __del_one_child(self, s, p):
         if p.left ==s:
@@ -107,7 +104,9 @@ for x in v:
     t.append(Node(x))
 t.check_vis(t.root)
 
-
+test_find_max()
+test_matching()
+test_del_leaf()
 
 #@pytest.parametrize("a, expected_result", [(5, True),
 #                                            (4, False)])
